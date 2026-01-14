@@ -1,0 +1,14 @@
+#cache
+.cache
+
+#venv
+__pycache__
+.venv
+.env
+
+#macOs
+.DS_Store
+
+#uv
+.python-version
+uv.lock
