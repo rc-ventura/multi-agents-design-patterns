@@ -1,22 +1,16 @@
 parser_task:
-  description: >
-    Read the file "invoice.pdf" and return the raw text.
-  expected_output: >
-    Raw text content of the PDF.
+  description: "Parse the PDF file at {file_path} to extract raw text"
+  expected_output: "Raw text content of the PDF"
   agent: parser_agent
 
 extractor_task:
-  description: >
-    Take the raw text from the previous task and extract the Invoice Number, Date, and Total.
-  expected_output: >
-    A JSON-like structure with the extracted fields.
+  description: "Extract structured data from raw text using regex"
+  expected_output: "Dictionary with invoice_number, date, and total"
   agent: extractor_agent
-  context: ["parser_task"]    
+  context: [parser_task]
 
 summarizer_task:
-  description: >
-    Generate a brief summary based on the extracted data.
-  expected_output: >
-    A short sentence summarizing the invoice.
+  description: "Generate a human-readable summary from structured data"
+  expected_output: "Final summary of the invoice"
   agent: summarizer_agent
-  context: ["extractor_task"]
+  context: [extractor_task]

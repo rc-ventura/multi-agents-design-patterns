@@ -5,6 +5,7 @@ parser_agent:
     Read PDF files and extract raw text.
   backstory: >
     You are a specialized bot that reads files.
+  llm: gpt-4o-mini
 
 extractor_agent:
   role: >
@@ -13,6 +14,7 @@ extractor_agent:
     Extract structured fields (Invoice No, Date, Total) from raw text.  
   backstory: >
     You are an expert at structuring unstructured data.
+  llm: gpt-4o-mini
 
 summarizer_agent:
   role: >
@@ -21,3 +23,4 @@ summarizer_agent:
     Generate a concise summary of the invoice.
   backstory: >
     You provide executive summaries of financial documents.
+  llm: gpt-4o-mini

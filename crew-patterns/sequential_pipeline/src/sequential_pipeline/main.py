@@ -1,27 +1,24 @@
 #!/usr/bin/env python
 import sys
 import warnings
-
+from pathlib import Path
 from datetime import datetime
 
 from sequential_pipeline.crew import SequentialPipeline
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
-# This main file is intended to be a way for you to run your
-# crew locally, so refrain from adding unnecessary logic into this file.
-# Replace with inputs you want to test with, it will automatically
-# interpolate any tasks and agents information
 
-DIR = "sequential_pipeline"
 
 def run():
     """
     Run the crew.
     """
-    inputs = {
-       "file_path": f"{DIR}/invoice.pdf"
-    }
+
+    base_dir = Path(__file__).resolve().parent
+    invoice_path = base_dir / "invoice.pdf"
+
+    inputs = {"file_path": str(invoice_path)}
 
     try:
         SequentialPipeline().crew().kickoff(inputs=inputs)
