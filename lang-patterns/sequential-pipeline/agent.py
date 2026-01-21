@@ -9,7 +9,7 @@ from langgraph.graph import StateGraph, START, END
 from tools import pdf_parser, regex_extractor, summary_engine
 
 load_dotenv()
-MODEL_NAME = "gemini-2.5-flash-lite"
+MODEL_NAME = "gpt-4o-mini"
 
 # State
 class SequentialState(TypedDict):
@@ -19,7 +19,8 @@ class SequentialState(TypedDict):
     final_summary: str
 
 # LLM
-llm = ChatGoogleGenerativeAI(model=MODEL_NAME)
+llm = ChatOpenAI(model=MODEL_NAME)
+#llm = ChatGoogleGenerativeAI(model=MODEL_NAME)
 
 # Nodes
 def parser_node(state: SequentialState):
