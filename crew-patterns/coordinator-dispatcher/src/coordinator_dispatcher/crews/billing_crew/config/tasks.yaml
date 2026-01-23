@@ -1,0 +1,11 @@
+billing_task:
+  description: >
+    Analyze the user's request: "{query}".
+    If it's a query about balance or status, use the Billing System DB.
+    If it's a request to create an invoice, use the Invoice Generator.
+    Extract necessary parameters like customer name and amount from the query if needed.
+  expected_output: >
+    A clear and professional response confirming the action taken (e.g., "Invoice #10001 generated")
+    or providing the requested information (e.g., "Your balance is $20.00").
+  agent: billing_specialist
+  llm: gpt-4o-mini

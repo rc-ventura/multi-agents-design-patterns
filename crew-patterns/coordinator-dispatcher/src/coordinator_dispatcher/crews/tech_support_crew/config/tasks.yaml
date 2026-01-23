@@ -1,0 +1,9 @@
+tech_support_task:
+  description: >
+    Analyze the technical issue: "{query}".
+    Run diagnostics using the Diagnostic Tool.
+    Search the Knowledge Base for solutions.
+  expected_output: >
+    A technical report summarizing the diagnostics and suggesting a solution based on the knowledge base.
+  agent: tech_support_specialist
+  llm: gpt-4o-mini

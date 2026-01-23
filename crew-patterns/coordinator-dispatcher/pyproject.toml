@@ -1,0 +1,28 @@
+[project]
+name = "coordinator_dispatcher"
+version = "0.1.0"
+description = "coordinator-dispatcher using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.8.0"
+]
+
+[project.scripts]
+kickoff = "coordinator_dispatcher.main:kickoff"
+run_crew = "coordinator_dispatcher.main:kickoff"
+plot = "coordinator_dispatcher.main:plot"
+run_with_trigger = "coordinator_dispatcher.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "flow"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/coordinator_dispatcher"]
+ 
+[tool.hatch.build.targets.sdist]
+include = ["src/coordinator_dispatcher/**"]
