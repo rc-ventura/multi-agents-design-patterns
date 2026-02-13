@@ -1,0 +1,64 @@
+security_audit_task:
+  description: >
+    Analyze the provided code for security vulnerabilities including:
+    - SQL injection risks
+    - Cross-site scripting (XSS) vulnerabilities
+    - Command injection possibilities
+    - Insecure deserialization
+    - Authentication/authorization issues
+    
+    Code to analyze: {code_input}
+  expected_output: >
+    A detailed security report listing all identified vulnerabilities with severity levels
+    (Critical, High, Medium, Low) and remediation recommendations.
+  async_execution: true
+  agent: security_auditor
+
+style_check_task:
+  description: >
+    Review the provided code for style and formatting issues:
+    - PEP8 compliance
+    - Naming conventions
+    - Code structure and organization
+    - Documentation and comments
+    - Import ordering
+    
+    Code to analyze: {code_input}
+  expected_output: >
+    A style report listing all formatting issues, PEP8 violations, and suggestions
+    for improving code readability and maintainability.
+  async_execution: true 
+  agent: style_enforcer
+
+performance_analysis_task:
+  description: >
+    Evaluate the performance characteristics of the provided code:
+    - Time complexity analysis (Big O notation)
+    - Space complexity analysis
+    - Potential bottlenecks
+    - Resource usage patterns
+    - Optimization opportunities
+    
+    Code to analyze: {code_input}
+  expected_output: >
+    A performance report with complexity analysis, identified bottlenecks,
+    and concrete optimization suggestions.
+  async_execution: true 
+  agent: performance_analyst
+
+pr_summary_task:
+  description: >
+    Synthesize the security, style, and performance reports into a unified Pull Request review.
+    Create a prioritized list of issues and recommendations that the developer should address.
+    
+    Organize the review into:
+    1. Critical Issues (must fix before merge)
+    2. Important Improvements (should fix)
+    3. Nice-to-have Suggestions (optional)
+    
+    Make the feedback constructive and actionable.
+  expected_output: >
+    A comprehensive, well-organized Pull Request review with prioritized feedback,
+    clear action items, and an overall recommendation (Approve, Request Changes, or Comment).   
+  agent: pr_summarizer
+  context: [security_audit_task, style_check_task, performance_analysis_task]

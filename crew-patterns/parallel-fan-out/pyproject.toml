@@ -1,0 +1,30 @@
+[project]
+name = "parallel_fan_out"
+version = "0.1.0"
+description = "parallel-fan-out using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.8.0",
+]
+
+[project.scripts]
+parallel_fan_out = "parallel_fan_out.main:run"
+run_crew = "parallel_fan_out.main:run"
+train = "parallel_fan_out.main:train"
+replay = "parallel_fan_out.main:replay"
+test = "parallel_fan_out.main:test"
+run_with_trigger = "parallel_fan_out.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/parallel_fan_out"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/parallel_fan_out/**"]
+
+[tool.crewai]
+type = "crew"
